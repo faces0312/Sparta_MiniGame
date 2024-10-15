@@ -16,7 +16,7 @@ public class Object_Pool : MonoBehaviour
         public GameObject prefab;
         public int size;
     }
-
+    [System.Serializable]
     public class ItemPool
     {
         public string tag;
@@ -27,7 +27,7 @@ public class Object_Pool : MonoBehaviour
     public List<ObstaclePool> obstaclePools;
     public Dictionary<string, Queue<GameObject>> obstaclPoolDictionary;
 
-    public List<ObstaclePool> itmePools;
+    public List<ItemPool> itemPools;
     public Dictionary<string, Queue<GameObject>> itemPoolDictionary;
 
     private void Awake()
@@ -66,7 +66,7 @@ public class Object_Pool : MonoBehaviour
     private void ItemInit()
     {
         itemPoolDictionary = new Dictionary<string, Queue<GameObject>>();
-        foreach (var pool in itmePools)
+        foreach (var pool in itemPools)
         {
             Queue<GameObject> objectPool = new Queue<GameObject>();
             for (int i = 0; i < pool.size; i++)
