@@ -292,7 +292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstaclePools: []
-  itmePools: []
+  itemPools: []
 --- !u!1 &1317771131
 GameObject:
   m_ObjectHideFlags: 0

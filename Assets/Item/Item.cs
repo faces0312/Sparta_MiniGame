@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Item : MonoBehaviour
@@ -8,13 +7,12 @@ public class Item : MonoBehaviour
     private float y_Pos;
     public int type;
     private float speed = 3;
-
+    public float waitSeconds = 0.5f;
+    public GameObject Sheild;
     protected virtual void OnEnable()
     {
-        if (type == 1)
-            x_Pos = Random.Range(-2.5f, 2.5f);
-        else if (type == 2)
-            x_Pos = Random.Range(-2.2f, 2.2f);
+        x_Pos = Random.Range(-2.5f, 2.5f);
+
         y_Pos = 5.5f;
 
         transform.position = new Vector2(x_Pos, y_Pos);
@@ -30,9 +28,20 @@ public class Item : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            Destroy(gameObject,1.0f);
+            StartCoroutine(DisableAfterDelay());
         }
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Sheild.SetActive(true);
+        }
+
     }
 
+    private IEnumerator DisableAfterDelay()
+    {
+        yield return new WaitForSeconds(waitSeconds);
+        gameObject.SetActive(false);
+    }
 
 }
+    
