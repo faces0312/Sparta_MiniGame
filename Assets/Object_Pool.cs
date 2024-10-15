@@ -16,9 +16,19 @@ public class Object_Pool : MonoBehaviour
         public GameObject prefab;
         public int size;
     }
+    [System.Serializable]
+    public class ItemPool
+    {
+        public string tag;
+        public GameObject prefab;
+        public int size;
+    }
 
     public List<ObstaclePool> obstaclePools;
     public Dictionary<string, Queue<GameObject>> obstaclPoolDictionary;
+
+    public List<ItemPool> itemPools;
+    public Dictionary<string, Queue<GameObject>> itemPoolDictionary;
 
     private void Awake()
     {
@@ -33,6 +43,7 @@ public class Object_Pool : MonoBehaviour
         {
             time = Random.Range(1.2f, 2.1f);
             SpawnFromObstaclePool("Normal_Obstacle", 1);
+            SpawnFromItemePool("P_Coin", 1);
         }
     }
 
@@ -52,6 +63,22 @@ public class Object_Pool : MonoBehaviour
         }
     }
 
+    private void ItemInit()
+    {
+        itemPoolDictionary = new Dictionary<string, Queue<GameObject>>();
+        foreach (var pool in itemPools)
+        {
+            Queue<GameObject> objectPool = new Queue<GameObject>();
+            for (int i = 0; i < pool.size; i++)
+            {
+                GameObject obj = Instantiate(pool.prefab);
+                obj.SetActive(false);
+                objectPool.Enqueue(obj);
+            }
+            itemPoolDictionary.Add(pool.tag, objectPool);
+        }
+    }
+
     public GameObject SpawnFromObstaclePool(string tag, int id)
     {
         if (!obstaclPoolDictionary.ContainsKey(tag))
@@ -63,5 +90,18 @@ public class Object_Pool : MonoBehaviour
         obstaclPoolDictionary[tag].Enqueue(obj);
         obj.SetActive(true);
         return obj;
+    }
+
+    public GameObject SpawnFromItemePool(string tag, int type)
+    {
+        if (!itemPoolDictionary.ContainsKey(tag))
+            return null;
+
+        GameObject item = itemPoolDictionary[tag].Dequeue();
+        Item itm = item.GetComponent<Item>();
+        itm.type = type;
+        itemPoolDictionary[tag].Enqueue(item);
+        item.SetActive(true);
+        return item;
     }
 }
