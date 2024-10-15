@@ -4,20 +4,28 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
+    private float x_Pos;
+    private float y_Pos;
     public int type;
-    // Start is called before the first frame update
-    void Start()
+    private float speed = 3;
+
+    protected virtual void OnEnable()
     {
-        float x = Random.Range(-2.3f, 2.3f);
-        float y = 5.3f;
-        transform.position = new Vector2(x, y); 
+        if (type == 1)
+            x_Pos = Random.Range(-2.5f, 2.5f);
+        else if (type == 2)
+            x_Pos = Random.Range(-2.2f, 2.2f);
+        y_Pos = 5.5f;
+
+        transform.position = new Vector2(x_Pos, y_Pos);
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        transform.position += Vector3.down * speed * Time.deltaTime;
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))

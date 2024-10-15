@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3617830531432658704}
   m_Layer: 0
   m_Name: P_Coin
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a90f7a5f150f834e9c2e083aa80c87f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 1
 --- !u!50 &3913436112350506373
 Rigidbody2D:
   serializedVersion: 4
