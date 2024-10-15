@@ -4,14 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Ladder
-  - Platform
-  - Ground
+  - Obstacle
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Ground
+  - 
   - Water
   - UI
   - 
