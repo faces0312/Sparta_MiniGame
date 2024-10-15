@@ -5,8 +5,13 @@ using static UnityEditor.Progress;
 
 public class GameManager : MonoBehaviour
 {
+    
     public GameObject Item1;
+    public GameObject Item2;
+    public int minTime;
+    public int maxTime;
     float currTime;
+    int random = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,15 +22,29 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         currTime += Time.deltaTime;
-        if (currTime > 3)
+        MakeItem(minTime, maxTime);
+    }
+
+    public void MakeItem(int minTime, int maxTime)
+    {
+        if (currTime > random)
         {
-            MakeItem(Item1);
-            currTime = 0;
+            int ramdomItem = Random.Range(0, 2);
+            if (ramdomItem == 0)
+            {
+                Debug.Log(random);
+                Instantiate(Item1);
+                random = Random.Range(minTime, maxTime);
+                currTime = 0;
+            }
+            else
+            {
+                Debug.Log(random);
+                Instantiate(Item2);
+                random = Random.Range(minTime, maxTime);
+                currTime = 0;
+            }
         }
     }
 
-    public void MakeItem(GameObject item)
-    {
-        Instantiate(item);
-    }
 }

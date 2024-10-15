@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-
+    public int type;
     // Start is called before the first frame update
     void Start()
     {

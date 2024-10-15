@@ -153,6 +153,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Item1: {fileID: 5607889067112220567, guid: 4ae856bf7f867fa41a48a0467a953566, type: 3}
+  Item2: {fileID: 7118151664372398789, guid: cdbedc72059e0e54b8b627113f2c496d, type: 3}
+  minTime: 10
+  maxTime: 15
 --- !u!4 &59961723
 Transform:
   m_ObjectHideFlags: 0
