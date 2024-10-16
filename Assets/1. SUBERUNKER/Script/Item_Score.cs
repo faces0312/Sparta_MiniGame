@@ -6,6 +6,6 @@ public class Item_Score : Item
 {
     protected override void ItemEffect()
     {
-        //TODO :: 추가 점수
+        Debug.Log("점수");
     }
 }

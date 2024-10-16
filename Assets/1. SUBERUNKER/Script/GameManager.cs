@@ -1,13 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Pool;
-using static UnityEditor.Progress;
 
 public class GameManager : MonoBehaviour
 {
     public int minTime;
     public int maxTime;
+
     float currTime;
     int random = 1;
 
@@ -25,6 +22,7 @@ public class GameManager : MonoBehaviour
         if (currTime > random)
         {
             GameObject item = objectPool.GetPooledObject();
+
             item.gameObject.SetActive(true);
             currTime = 0;
             random = Random.Range(minTime, maxTime);

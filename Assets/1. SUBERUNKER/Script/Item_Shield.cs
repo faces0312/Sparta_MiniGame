@@ -1,12 +1,20 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Item_Shield : Item
 {
-    //public GameObject shield;
+    public int ShieldTime;
+    //public GameObject Shield;
     protected override void ItemEffect()
     {
-        //TODO :: ½¯µå »ý¼º
+        Debug.Log("½¯µå");
+        //Shield.SetActive(true);
+        //StartCoroutine(DisableShieldAfterTime());
     }
+
+    //private IEnumerator DisableShieldAfterTime()
+    //{
+    //    //yield return new WaitForSeconds(ShieldTime);
+    //    //Shield.SetActive(false);
+    //}
 }
