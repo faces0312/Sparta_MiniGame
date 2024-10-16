@@ -134,7 +134,28 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: grss01_0
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 53
+        width: 408
+        height: 408
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 855bb4a3629ee2f4987df409a4a0c8c8
+      internalID: -1693453623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -145,7 +166,14 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      grss01_0: -1693453623
+      grss01_1: 140732449
+      grss01_2: 520551277
+      grss01_3: -1934972720
+      grss01_4: -1745205063
+      grss01_5: -160338359
+      grss01_6: 1942849952
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
