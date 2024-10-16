@@ -312,13 +312,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3a854b5d364be7468a512928dd16bb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstaclePools:
+  objectPools:
   - tag: Normal_Obstacle
     prefab: {fileID: 5624223166259295035, guid: e8bf80a865dcef14b959989b015c74b0, type: 3}
     size: 15
   - tag: Hard_Obstacle
     prefab: {fileID: 2820102960641767750, guid: 6ca4b0fab993e7a4695d95e3b28b1f92, type: 3}
     size: 15
+  - tag: P_Coin
+    prefab: {fileID: 7118151664372398789, guid: cdbedc72059e0e54b8b627113f2c496d, type: 3}
+    size: 10
+  - tag: P_Rubi
+    prefab: {fileID: 5607889067112220567, guid: 4ae856bf7f867fa41a48a0467a953566, type: 3}
+    size: 10
 --- !u!4 &2056092028
 Transform:
   m_ObjectHideFlags: 0

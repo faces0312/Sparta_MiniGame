@@ -203,3 +203,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60e492cd4107ec245a4881d2e0548e30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boxCollider: {fileID: 7970221616164812188}
+  x_Range: 2.5
+  y_Range: 0

@@ -1,18 +1,17 @@
 using System.Collections;
 using UnityEngine;
 
-public class Item : MonoBehaviour
+public abstract class Item : MonoBehaviour
 {
     private float x_Pos;
     private float y_Pos;
-    public int type;
-    private float speed = 3;
+    private float speed = 4.5f;
     public float waitSeconds = 0.5f;
-    public GameObject Sheild;
-    protected virtual void OnEnable()
+    
+    //public GameObject Sheild;
+    void OnEnable()
     {
         x_Pos = Random.Range(-2.5f, 2.5f);
-
         y_Pos = 5.5f;
 
         transform.position = new Vector2(x_Pos, y_Pos);
@@ -24,7 +23,7 @@ public class Item : MonoBehaviour
         transform.position += Vector3.down * speed * Time.deltaTime;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
@@ -32,16 +31,20 @@ public class Item : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Player"))
         {
-            Sheild.SetActive(true);
+            //id값에 따라서 아이템 효과구분
+            ItemEffect();
+
+            //Sheild.SetActive(true);
         }
 
     }
+
+    protected abstract void ItemEffect();
+
 
     private IEnumerator DisableAfterDelay()
     {
         yield return new WaitForSeconds(waitSeconds);
         gameObject.SetActive(false);
     }
-
 }
-    

@@ -7,17 +7,18 @@ public class Obstacle : MonoBehaviour
     private float x_Pos;
     private float y_Pos;
 
-    public int id;
+    //public int id;
+    public BoxCollider2D boxCollider;
+
+    private float x_Range = 2.8f;
+
     private float speed = 3;
 
-    protected virtual void OnEnable()
+    void OnEnable()
     {
-        if(id == 1)
-            x_Pos = Random.Range(-2.5f, 2.5f);
-        else if (id == 2)
-            x_Pos = Random.Range(-2.2f, 2.2f);
+        x_Range = x_Range - boxCollider.size.x / 2f;
+        x_Pos = Random.Range(-x_Range, x_Range);
         y_Pos = 5.5f;
-
         transform.position = new Vector2(x_Pos, y_Pos);
     }
 

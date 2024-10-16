@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5607889067112220561}
   - component: {fileID: 5607889067112220566}
-  - component: {fileID: 6337971116879785323}
   - component: {fileID: -5174642729749755431}
+  - component: {fileID: 4367627661200660630}
   m_Layer: 0
   m_Name: P_Rubi
   m_TagString: Item
@@ -86,20 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6337971116879785323
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5607889067112220567}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a90f7a5f150f834e9c2e083aa80c87f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 0
-  waitSeconds: 0.5
 --- !u!61 &-5174642729749755431
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -145,3 +131,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &4367627661200660630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5607889067112220567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9becdf9cdbc5bd4095857b09c6cd7c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  waitSeconds: 0.5
+  shield: {fileID: 0}
