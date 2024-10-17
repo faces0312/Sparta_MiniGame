@@ -23,21 +23,20 @@ public abstract class Item : MonoBehaviour
         transform.position += Vector3.down * speed * Time.deltaTime;
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
+            speed = 0;
             StartCoroutine(DisableAfterDelay());
         }
         if (collision.gameObject.CompareTag("Player"))
         {
-            //id값에 따라서 아이템 효과구분
             ItemEffect();
-
             //Sheild.SetActive(true);
         }
-
     }
+
 
     protected abstract void ItemEffect();
 
