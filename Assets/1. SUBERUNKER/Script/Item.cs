@@ -1,16 +1,14 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Item2 : MonoBehaviour
+public abstract class Item : MonoBehaviour
 {
-    // Start is called before the first frame update
     private float x_Pos;
     private float y_Pos;
     private float speed = 4.5f;
     public float waitSeconds = 0.5f;
-    public int id;
-
+    
+    //public GameObject Sheild;
     void OnEnable()
     {
         x_Pos = Random.Range(-2.5f, 2.5f);
@@ -25,7 +23,7 @@ public class Item2 : MonoBehaviour
         transform.position += Vector3.down * speed * Time.deltaTime;
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
@@ -34,34 +32,18 @@ public class Item2 : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Player"))
         {
-            if (id == 0)
-            {
-                GameObject[] obstacles = GameObject.FindGameObjectsWithTag("Obstacle");
-                foreach (GameObject obstacle in obstacles)
-                {
-                    obstacle.SetActive(false);
-                    Debug.Log("Àå¾Ö¹° ÆÄ±«µÊ");
-                }
-            }
-            if(id == 1)
-            {
-                GameManager gameManager = FindObjectOfType<GameManager>();
-                if (gameManager != null)
-                {
-                    gameManager.score += 10;
-                    Debug.Log("Á¡¼ö Ãß°¡µÊ");
-                }
-            }
-            gameObject.SetActive(false);
+            ItemEffect();
+            //Sheild.SetActive(true);
         }
-
     }
+
+
+    protected abstract void ItemEffect();
+
 
     private IEnumerator DisableAfterDelay()
     {
         yield return new WaitForSeconds(waitSeconds);
-        speed = 4.5f;
         gameObject.SetActive(false);
     }
-
 }
