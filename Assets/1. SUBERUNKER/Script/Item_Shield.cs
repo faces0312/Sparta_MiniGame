@@ -3,13 +3,11 @@ using UnityEngine;
 
 public class Item_Shield : Item
 {
-    public int ShieldTime;
-    //public GameObject Shield;
+    public static player player;
     protected override void ItemEffect()
     {
+        player = new player();
         Debug.Log("½¯µå");
-        //Shield.SetActive(true);
-        //StartCoroutine(DisableShieldAfterTime());
     }
 
     //private IEnumerator DisableShieldAfterTime()

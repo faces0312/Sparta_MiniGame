@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7118151664372398809}
   - component: {fileID: 7118151664372398808}
   - component: {fileID: 3617830531432658704}
-  - component: {fileID: 684632836565740092}
+  - component: {fileID: 8490292123975053176}
   m_Layer: 0
   m_Name: P_Coin
   m_TagString: Item
@@ -131,7 +131,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &684632836565740092
+--- !u!114 &8490292123975053176
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,7 +140,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 7118151664372398789}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66ed7738d5dac7d489040e23bcf99c3a, type: 3}
+  m_Script: {fileID: 11500000, guid: f036c50a52939d24293c0acc1563ef4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitSeconds: 1
+  waitSeconds: 0.5
+  id: 1
