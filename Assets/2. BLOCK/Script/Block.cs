@@ -85,52 +85,18 @@ public class Block : MonoBehaviour
         }
     }
 }
-/*
-public abstract class IBlock
+
+public interface IBlock
 {
-    protected int hp = 0;
-
-    protected IBlock(int _hp)
-    {
-        this.hp = _hp;
-    }
-
     public abstract void Block_Behaviour();
 }
 
-public class BlockA : IBlock
+public class Block_Normal : IBlock
 {
-    public BlockA(int _hp) : base(_hp)
+    //public int hp { }
+    public void Block_Behaviour()
     {
-
-    }
-
-    public override void Block_Behaviour()
-    {
-        Debug.Log("blockA");
+        throw new System.NotImplementedException();
     }
 }
 
-public class BlockB : IBlock
-{
-    public override void Block_Behaviour()
-    {
-        Debug.Log("blockB");
-    }
-}
-
-public class BlockC : IBlock
-{
-    public override void Block_Behaviour()
-    {
-        Debug.Log("blockC");
-    }
-}
-
-public class BlockD : IBlock
-{
-    public override void Block_Behaviour()
-    {
-        Debug.Log("blockD");
-    }
-}*/
