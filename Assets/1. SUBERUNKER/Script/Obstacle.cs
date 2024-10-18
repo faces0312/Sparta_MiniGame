@@ -25,7 +25,7 @@ public class Obstacle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += Vector3.down * speed * Time.deltaTime;
+        transform.position += Vector3.down * (speed + GM_Suberunker.gm.level * 0.3f) * Time.deltaTime;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -37,8 +37,14 @@ public class Obstacle : MonoBehaviour
             //
             Time.timeScale = 0;
         }
-        
+
         if(collision.tag == "Ground")
             gameObject.SetActive(false);
+
+        if(collision.tag == "Shield")
+        {
+            GM_Suberunker.gm.shield.SetActive(false);
+            gameObject.SetActive(false);
+        }
     }
 }
