@@ -35,13 +35,14 @@ public class TestBall : MonoBehaviour
 
     private void ResetBall()
     {
-        Vector2 pos;
 
-        GameObject[] player = GameObject.FindGameObjectsWithTag("Player");
+        //Vector2 pos;
 
-        pos = player[0].transform.position;
+        //GameObject[] player = GameObject.FindGameObjectsWithTag("Player");
 
-        transform.position = new Vector2(pos.x, pos.y+2);
+        //pos = player[0].transform.position;
+
+        transform.position = new Vector2(0, -3.8f);
         gameObject.SetActive(true);
     }
 }

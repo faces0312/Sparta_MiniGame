@@ -1,37 +1,36 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.Windows;
 
-public class Player : MonoBehaviour
+public class PlayerPaddle : MonoBehaviour
 {
     private int speed = 5;
     private PlayerPaddleInput input;
+    private GameObject playerPaddle;
 
     void Start()
     {
         input = GetComponent<PlayerPaddleInput>();
+        playerPaddle.transform.position = new Vector3(0f,-4f,0f);
     }
 
     void Update()
     {
-        Moving();
+        PaddleMoving();
     }
 
-    private void Moving()
+    private void PaddleMoving()
     {
         Vector3 curPos = transform.position;
-        
-        //= curPos.x = Mathf.Clamp(curPos.x , -1.95f, 1.95f) 동일
-        if (curPos.x < -1.95f)
+        //= curPos.x = Mathf.Clamp(curPos.x , 2f, 2f) 동일
+        if (curPos.x < -2f)
         {
-            curPos.x = -1.95f;
+            curPos.x = -2f;
         }
-        else if (curPos.x > 1.95f)
+        else if (curPos.x > 2f)
         {
-            curPos.x = 1.95f;
+            curPos.x = 2f;
         }
 
         transform.position = curPos;
