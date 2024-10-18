@@ -23,15 +23,17 @@ public class Player : MonoBehaviour
     private void Moving()
     {
         Vector3 curPos = transform.position;
-
-        if (transform.position.x < -1.95f)
+        
+        //= curPos.x = Mathf.Clamp(curPos.x , -1.95f, 1.95f) µ¿ÀÏ
+        if (curPos.x < -1.95f)
         {
             curPos.x = -1.95f;
         }
-        else if (transform.position.x > 1.95f)
+        else if (curPos.x > 1.95f)
         {
             curPos.x = 1.95f;
         }
+
         transform.position = curPos;
         transform.Translate(input.dir * speed * Time.deltaTime, 0, 0);
     }
