@@ -6,12 +6,14 @@ public class TopDownMovement : MonoBehaviour
     private Rigidbody2D movementRigidbody;
     private SpriteRenderer spriteRenderer;
 
+    private float speed;
+
     private Vector2 movementDirection = Vector2.zero;
     private bool isGrounded = true;  // 땅에 닿아 있는지 여부 확인
 
-    public float jumpForce = 7f;  // 점프 힘
-    public Transform groundCheck;  // 땅 체크 위치
-    public LayerMask groundLayer;  // 땅 레이어
+    public float jumpForce = 3.5f;  // 점프 힘
+    /*public Transform groundCheck;  // 땅 체크 위치
+    public LayerMask groundLayer;  // 땅 레이어*/
 
 
     private void Awake()
@@ -24,18 +26,48 @@ public class TopDownMovement : MonoBehaviour
     private void Start()
     {
         controller.OnMoveEvent += Move;
+        speed = 5f;
     }
 
     private void Update()
     {
         // 점프 입력 감지
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             Jump();
         }
 
         // 땅에 닿아 있는지 체크
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
+        //isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
+    }
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Ground")
+        {
+            speed = 5f;
+            isGrounded = true;
+        }
+
+        /*if(collision.gameObject.tag == "Wall")
+        {
+            speed = 0f;
+            movementRigidbody.velocity = Vector2.zero;
+        }*/
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Ground")
+        {
+            isGrounded = false;
+        }
+
+        /*if (collision.gameObject.tag == "Wall")
+        {
+            speed = 5f;
+        }*/
     }
 
 
@@ -52,7 +84,7 @@ public class TopDownMovement : MonoBehaviour
 
     private void ApplyMovement(Vector2 direction)
     {
-        direction = direction * 5;
+        direction = direction * speed;
         movementRigidbody.velocity = new Vector2(direction.x, movementRigidbody.velocity.y); // 점프 중에도 수평 이동 유지
     }
 
