@@ -11,7 +11,7 @@ public abstract class Item : MonoBehaviour
     //public GameObject Sheild;
     void OnEnable()
     {
-        x_Pos = Random.Range(-2.5f, 2.5f);
+        x_Pos = Random.Range(-2.3f, 2.3f);
         y_Pos = 5.5f;
 
         transform.position = new Vector2(x_Pos, y_Pos);
@@ -23,7 +23,7 @@ public abstract class Item : MonoBehaviour
         transform.position += Vector3.down * speed * Time.deltaTime;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
