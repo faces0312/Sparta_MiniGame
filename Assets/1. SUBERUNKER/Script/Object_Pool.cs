@@ -19,12 +19,6 @@ public class Object_Pool : MonoBehaviour
         public GameObject prefab;
         public int size;
     }
-    public class ObectPool2
-    {
-        public string tag;
-        public GameObject prefab;
-        public int size;
-    }
 
     public List<ObectPool> objectPools;
     public Dictionary<string, Queue<GameObject>> objectPoolsDictionary;
