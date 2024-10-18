@@ -6,7 +6,12 @@ using Random = UnityEngine.Random;
 
 public class Object_Pool : MonoBehaviour
 {
+    public float time_Min;
+    public float time_Max;
+
     private float time = 0;
+
+    public int spawn_Num;//몇번 반복해서 생성할건지
 
     // 오브젝트 풀 데이터를 정의할 데이터 모음 정의
     [System.Serializable]
@@ -25,15 +30,21 @@ public class Object_Pool : MonoBehaviour
         ObjectInit();
     }
 
+    private void Start()
+    {
+        spawn_Num = 1;
+        time_Max = 3f;
+        time_Min = 2.5f;
+    }
+
     private void Update()
     {
         if (time > 0)
             time -= Time.deltaTime;
         else
         {
-            time = Random.Range(1.2f, 2.1f);
-            SpawnFromObjectPool("Normal_Obstacle");
-            SpawnFromObjectPool("P_Coin");
+            time = Random.Range(time_Min, time_Max);
+            GM_Suberunker.gm.SpawnObject_Level(spawn_Num);
         }
     }
 

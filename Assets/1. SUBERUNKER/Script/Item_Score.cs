@@ -7,5 +7,8 @@ public class Item_Score : Item
     protected override void ItemEffect()
     {
         //TODO :: 추가 점수
+        GM_Suberunker.gm.score += 100;
+        //
+        gameObject.SetActive(false);
     }
 }

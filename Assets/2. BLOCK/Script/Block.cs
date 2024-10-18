@@ -17,21 +17,21 @@ public class Block : MonoBehaviour
 
     public SpriteRenderer[] block_Kind;//블록 이미지
 
+    public int id;
     public int hp;
-    public bool is_Stone;//고정블록인지
-    public bool is_Item;//아이템블록인지
 
     private void OnEnable()
     {
         Block_Select();
+        //Block_Choice();
     }
+
+    //protected abstract void Block_Choice();
 
     public void Block_Select()
     {
         hp = 1;
-        is_Stone = false;
-        is_Item = false;
-        for (int i=0; i<4; i++)
+        for (int i=0; i<5; i++)
         {
             block_Kind[i].gameObject.SetActive(false);
         }
@@ -39,27 +39,30 @@ public class Block : MonoBehaviour
         int numRan = Random.Range(0, 100);
         if(numRan < 50)
         {
+            id = 0;
             block_Kind[0].gameObject.SetActive(true);
-            //block = new BlockA(1);
+            //
+            //block = new BlockA(1,true, false);
         }
         else if (numRan < 70)
         {
+            id = 1;
             hp = 2;
             block_Kind[1].gameObject.SetActive(true);
             //block = new BlockB();
         }
         else if (numRan < 80)
         {
+            id = 2;
             block_List.bolckAmount -= 1;
             hp = int.MaxValue;
-            is_Stone = true;
-            block_Kind[2].gameObject.SetActive(true);
+            block_Kind[3].gameObject.SetActive(true);
            //block = new BlockC();
         }
         else
         {
-            is_Item = true;
-            block_Kind[3].gameObject.SetActive(true);
+            id = 3;
+            block_Kind[4].gameObject.SetActive(true);
             //block = new BlockD();
         }
         //block.Block_Behaviour();
@@ -67,36 +70,68 @@ public class Block : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Ball")
+        if(collision.tag == "Player")
         {
+            Block_Hit(id);
+        }
+    }
+
+    private void Block_Hit(int id)
+    {
+        if(id == 0)
+        {
+            //일반 블록
+            Debug.Log("일반블록");
+            gameObject.SetActive(false);
+        }
+        else if (id == 1)
+        {
+            //강화 블록
+            Debug.Log("강화블록");
             hp--;
-
-            //만약 강화블록이면 이미지 변화
-            //block.Block_Behaviour();
-            //
-
-            if(hp <= 0 && is_Stone == false)
-            {
-                //만약 아이템 블록이라면 아이템이 떨어져야 함
-                
-                //
+            if(hp <= 0)
                 gameObject.SetActive(false);
+            else
+            {
+                block_Kind[1].gameObject.SetActive(false);
+                block_Kind[2].gameObject.SetActive(true);
             }
+        }
+        else if (id == 2)
+        {
+            //고정 블록
+            Debug.Log("고정블록");
+            return;
+        }
+        else if (id == 3)
+        {
+            //아이템 블록
+            Debug.Log("아이템블록");
+            gameObject.SetActive(false);
         }
     }
 }
 
-public interface IBlock
+/*public interface IBlock
 {
+    //public int _hp { get; set; }
+    
     public abstract void Block_Behaviour();
 }
 
-public class Block_Normal : IBlock
+public class Block_Normal : Block, IBlock
 {
+    //public int _hp { get; set; }
+
     //public int hp { }
     public void Block_Behaviour()
     {
-        throw new System.NotImplementedException();
+        Debug.Log(hp);
     }
-}
+
+    protected override void Block_Choice()
+    {
+        block_Kind[0].gameObject.SetActive(true);
+    }
+}*/
 
