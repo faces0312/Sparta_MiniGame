@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BlockTest.unity
     guid: a96f2b070bdd0ab46b943aea908b4f55
+  - enabled: 1
+    path: Assets/Scenes/SUBERUNKER.unity
+    guid: 736c9a857d3d205408117917589321a2
+  - enabled: 1
+    path: Assets/Scenes/BrickOutGame.unity
+    guid: 72b21e0f2deb76841b0c9aa87bdf818f
   m_configObjects: {}
