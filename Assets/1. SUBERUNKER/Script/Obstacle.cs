@@ -2,38 +2,43 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Obstacle : MonoBehaviour
+public abstract class Obstacle : MonoBehaviour
 {
-    private float x_Pos;
-    private float y_Pos;
+    public float x_Pos;
+    public float y_Pos;
 
     //public int id;
     public BoxCollider2D boxCollider;
 
-    private float x_Range = 2.8f;
+    public float x_Range = 2.8f;
 
-    private float speed = 3;
+    public float speed = 3;
 
     void OnEnable()
     {
-        x_Range = x_Range - boxCollider.size.x / 2f;
+        Obstacle_Init();
+        /*x_Range = x_Range - boxCollider.size.x / 2f;
         x_Pos = Random.Range(-x_Range, x_Range);
         y_Pos = 5.5f;
-        transform.position = new Vector2(x_Pos, y_Pos);
+        transform.position = new Vector2(x_Pos, y_Pos);*/
     }
+
+    protected abstract void Obstacle_Init();
 
     // Update is called once per frame
     void Update()
     {
-        transform.position += Vector3.down * (speed + GM_Suberunker.gm.level * 0.3f) * Time.deltaTime;
+        Obstacle_Move();
     }
+
+    protected abstract void Obstacle_Move();
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Player")
         {
             //게임 오버
-
+            //GM_Suberunker.gm.End_Page();
             //
             Time.timeScale = 0;
         }

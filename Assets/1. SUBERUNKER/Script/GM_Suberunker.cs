@@ -7,7 +7,6 @@ public class GM_Suberunker : MonoBehaviour
 {
     public static GM_Suberunker gm;
 
-
     //레벨 난이도 관련
     public Object_Pool object_Pool;
     public TextMeshProUGUI level_Text;
@@ -64,8 +63,9 @@ public class GM_Suberunker : MonoBehaviour
     {
         int obstacle_Ran = Random.Range(0, 10);
         int item_Init = Random.Range(0, 10);
+        int obstacle_SideRan = Random.Range(0, 10);
 
-        for(int i=0; i <num; i++)
+        for (int i=0; i <num; i++)
         {
             if (obstacle_Ran < 7)
                 object_Pool.SpawnFromObjectPool("Normal_Obstacle");
@@ -73,7 +73,17 @@ public class GM_Suberunker : MonoBehaviour
                 object_Pool.SpawnFromObjectPool("Hard_Obstacle");
         }
 
-        if(item_Init < 3)
+        if (obstacle_SideRan < 3)
+        {
+            int side_Ran = Random.Range(0, 2);
+
+            if (side_Ran < 1)
+                object_Pool.SpawnFromObjectPool("Left_Obstacle");
+            else
+                object_Pool.SpawnFromObjectPool("Right_Obstacle");
+        }
+
+        if (item_Init < 3)
         {
             int item_Ran = Random.Range(0, 10);
 

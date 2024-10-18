@@ -6,19 +6,18 @@ using UnityEngine;
 public class TestBall : MonoBehaviour
 {
     private GM_Block GM_Block;
-    
+    public int ballCount;
 
-    // Start is called before the first frame update
     void Start()
     {
         GM_Block = FindObjectOfType<GM_Block>();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        int ballCount = GameObject.FindGameObjectsWithTag("Item").Length; //태그는 변경하기
+        ballCount = GameObject.FindGameObjectsWithTag("Ball").Length; //태그는 변경하기
 
-        if (collision.gameObject.tag == "Ground") 
+        if (collision.gameObject.tag == "Ground")
         {
             if (ballCount == 1)
             {
