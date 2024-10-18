@@ -11,6 +11,8 @@ public class Object_Pool : MonoBehaviour
 
     private float time = 0;
 
+    public int spawn_Num;//몇번 반복해서 생성할건지
+
     // 오브젝트 풀 데이터를 정의할 데이터 모음 정의
     [System.Serializable]
     public class ObectPool
@@ -30,6 +32,7 @@ public class Object_Pool : MonoBehaviour
 
     private void Start()
     {
+        spawn_Num = 1;
         time_Max = 3f;
         time_Min = 2.5f;
     }
@@ -41,7 +44,7 @@ public class Object_Pool : MonoBehaviour
         else
         {
             time = Random.Range(time_Min, time_Max);
-            GM_Suberunker.gm.SpawnObject_Level();
+            GM_Suberunker.gm.SpawnObject_Level(spawn_Num);
         }
     }
 

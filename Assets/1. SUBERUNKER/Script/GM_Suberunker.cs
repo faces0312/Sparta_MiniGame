@@ -54,18 +54,24 @@ public class GM_Suberunker : MonoBehaviour
             object_Pool.time_Max -= 0.2f;
             object_Pool.time_Min -= 0.2f;
         }
+        else
+            object_Pool.spawn_Num++;
+
         Invoke("Level_Up", 3.5f);
     }
 
-    public void SpawnObject_Level()
+    public void SpawnObject_Level(int num)
     {
         int obstacle_Ran = Random.Range(0, 10);
         int item_Init = Random.Range(0, 10);
 
-        if(obstacle_Ran < 7)
-            object_Pool.SpawnFromObjectPool("Normal_Obstacle");
-        else
-            object_Pool.SpawnFromObjectPool("Hard_Obstacle");
+        for(int i=0; i <num; i++)
+        {
+            if (obstacle_Ran < 7)
+                object_Pool.SpawnFromObjectPool("Normal_Obstacle");
+            else
+                object_Pool.SpawnFromObjectPool("Hard_Obstacle");
+        }
 
         if(item_Init < 3)
         {
