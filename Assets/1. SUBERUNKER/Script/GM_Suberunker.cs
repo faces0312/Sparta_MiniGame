@@ -54,7 +54,7 @@ public class GM_Suberunker : MonoBehaviour
             object_Pool.time_Max -= 0.2f;
             object_Pool.time_Min -= 0.2f;
         }
-        else
+        else if(object_Pool.spawn_Num < 3)
             object_Pool.spawn_Num++;
 
         Invoke("Level_Up", 3.5f);
