@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Windows;
 
-public class PlayerPaddle : MonoBehaviour
+public class Player : MonoBehaviour
 {
     private int speed = 5;
     private PlayerPaddleInput input;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerInput : MonoBehaviour
+public class PlayerPaddleInput : MonoBehaviour
 {
     public float dir;
     Keyboard keyborad;
@@ -15,7 +15,7 @@ public class PlayerInput : MonoBehaviour
     }
 
     void Update()
-    {
+    {        
         if (keyborad.aKey.isPressed)
         {
             dir = -1;
