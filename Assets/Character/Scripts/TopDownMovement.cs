@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 public class TopDownMovement : MonoBehaviour
-{ 
+{
     private TopDownConroller controller;
     private Rigidbody2D movementRigidbody;
     private SpriteRenderer spriteRenderer;
@@ -12,7 +12,6 @@ public class TopDownMovement : MonoBehaviour
     public float jumpForce = 7f;  // 점프 힘
     public Transform groundCheck;  // 땅 체크 위치
     public LayerMask groundLayer;  // 땅 레이어
-
 
     private void Awake()
     {
@@ -37,7 +36,6 @@ public class TopDownMovement : MonoBehaviour
         // 땅에 닿아 있는지 체크
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
     }
-
 
     private void Move(Vector2 direction)
     {
@@ -74,3 +72,4 @@ public class TopDownMovement : MonoBehaviour
         movementRigidbody.velocity = new Vector2(movementRigidbody.velocity.x, jumpForce);
     }
 }
+
