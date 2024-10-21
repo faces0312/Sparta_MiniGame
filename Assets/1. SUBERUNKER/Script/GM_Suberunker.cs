@@ -82,5 +82,15 @@ public class GM_Suberunker : MonoBehaviour
             else
                 object_Pool.SpawnFromObjectPool("P_Rubi");
         }
+       
+    }
+    public void GameOver()
+    {
+        Invoke("StopTime", 1f);
+    }
+
+    void StopTime()
+    {
+        Time.timeScale = 0f;
     }
 }
