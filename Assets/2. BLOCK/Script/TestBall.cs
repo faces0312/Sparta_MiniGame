@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class TestBall : MonoBehaviour
 {
-<<<<<<< HEAD
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Ground")
@@ -26,33 +25,6 @@ public class TestBall : MonoBehaviour
                 GM_Block.gm_Block.ball_Num--;
                 gameObject.SetActive(false);
             }
-=======
-    private GM_Block GM_Block;
-    public int ballCount;
-
-    void Start()
-    {
-        GM_Block = FindObjectOfType<GM_Block>();
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        ballCount = GameObject.FindGameObjectsWithTag("Ball").Length; //태그는 변경하기
-
-        if (collision.gameObject.tag == "Ground")
-        {
-            if (ballCount == 1)
-            {
-                GM_Block.BallDropped();
-                gameObject.SetActive(false);
-                Invoke("ResetBall", 1f);
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
-
->>>>>>> origin_InHyeLee
         }
     }
 }
