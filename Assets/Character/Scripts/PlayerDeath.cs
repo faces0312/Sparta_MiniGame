@@ -36,6 +36,7 @@ public class PlayerDeath : MonoBehaviour
     {
     isDeath = true; // 죽은 상태로 변경
 
+    rb.velocity = Vector3.zero; // @@
     anit.SetTrigger("Death"); // 죽음 애니메이션 플레이
                               //Destroy(gameObject, 1f); // 1초 뒤 오브젝트 삭제
         GM_Suberunker.gm.GameOver();

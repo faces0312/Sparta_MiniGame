@@ -10,6 +10,11 @@ public abstract class Obstacle : MonoBehaviour
     public BoxCollider2D boxCollider;
     public float x_Range = 2.8f;
     public float speed = 3;
+
+    private void Awake()
+    {
+        boxCollider = GetComponent<BoxCollider2D>(); //@@
+    }
     void OnEnable()
     {
         Obstacle_Init();
