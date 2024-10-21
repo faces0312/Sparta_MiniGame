@@ -76,6 +76,15 @@ public class Block : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Bullet")
+        {
+            Block_Hit(id);
+            collision.gameObject.SetActive(false);
+        }
+    }
+
 
     private void Block_Hit(int id)
     {
@@ -112,6 +121,7 @@ public class Block : MonoBehaviour
         {
             //아이템 블록
             Debug.Log("아이템블록");
+            GM_Block.gm_Block.Item_Block(gameObject.transform.position);
             block_List.bolckAmount -= 1;
             gameObject.SetActive(false);
         }
