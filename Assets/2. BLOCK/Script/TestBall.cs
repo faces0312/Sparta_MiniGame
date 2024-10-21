@@ -32,17 +32,4 @@ public class TestBall : MonoBehaviour
 
         }
     }
-
-    private void ResetBall()
-    {
-
-        //Vector2 pos;
-
-        //GameObject[] player = GameObject.FindGameObjectsWithTag("Player");
-
-        //pos = player[0].transform.position;
-
-        transform.position = new Vector2(0, -3.8f);
-        gameObject.SetActive(true);
-    }
 }
