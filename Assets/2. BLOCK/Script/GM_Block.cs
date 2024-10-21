@@ -24,6 +24,7 @@ public class GM_Block : MonoBehaviour
 
     void Awake()
     {
+        Time.timeScale = 1;
         gm_Block = this;
         stage_Level = 0;
     }
@@ -35,7 +36,6 @@ public class GM_Block : MonoBehaviour
 
     private void Update()
     {
-        Life.text = block_List.bolckAmount.ToString();
         if (block_List.bolckAmount <= 0)
         {
             StopCoroutine("Bullet_Pool");
@@ -51,8 +51,7 @@ public class GM_Block : MonoBehaviour
         block_List.BlockInit();
         ball_Num = 1;
         curLives = totalLives;
-        Life.text = $"������� :{curLives}";        
-        Life.text = block_List.bolckAmount.ToString();
+        Life.text = $"남은 목숨 :{curLives}";
 
         objectPool.SpawnFromObjectPool("Ball", new Vector2(player.transform.position.x, player.transform.position.y +2));
     }  
@@ -60,17 +59,11 @@ public class GM_Block : MonoBehaviour
     public void BallDropped()
     {
         curLives--;
-        Life.text = $"������� :{curLives}";
+        Life.text = $"남은 목숨 :{curLives}";
         if (curLives == 0)
         {
-            GameOver();
+            UIManager.instance.GameOver();
         }
-        Life.text = $"������� :{curLives}";
-    }
-
-    public void GameOver()
-    {
-        Time.timeScale = 0.0f;
     }
 
     public void Item_Block(Vector2 Pos)
