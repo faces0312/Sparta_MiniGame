@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 
 public class GM_Block : MonoBehaviour
 {
-    public static GM_Block gm_Block;
+    public static GM_Block instance;
 
     public ObjectPool_Block objectPool;
 
@@ -21,15 +21,13 @@ public class GM_Block : MonoBehaviour
 
     private void Awake()
     {
-        gm_Block = this;
+        instance = this;
     }
-    // Start is called before the first frame update
     void Start()
     {
         ball_Num = 1;
         curLives = totalLives;
-        Life.text = "Life :" + curLives.ToString();
-        Life.text = curLives.ToString();
+        Life.text = $"巢篮格见 :{curLives}";        
 
         objectPool.SpawnFromObjectPool("Ball", new Vector2(player.transform.position.x, player.transform.position.y +2));
     }
@@ -37,12 +35,12 @@ public class GM_Block : MonoBehaviour
     public void BallDropped()
     {
         curLives--;
-        Life.text = curLives.ToString();
+        Life.text = $"巢篮格见 :{curLives}";
         if (curLives == 0)
         {
             GameOver();
         }
-        Life.text = "Life : " + curLives.ToString();
+        Life.text = $"巢篮格见 :{curLives}";
     }
 
     public void GameOver()
