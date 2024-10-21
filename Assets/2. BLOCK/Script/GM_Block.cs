@@ -24,6 +24,7 @@ public class GM_Block : MonoBehaviour
 
     void Awake()
     {
+        Time.timeScale = 1;
         gm_Block = this;
         stage_Level = 0;
     }
@@ -61,13 +62,8 @@ public class GM_Block : MonoBehaviour
         Life.text = $"남은 목숨 :{curLives}";
         if (curLives == 0)
         {
-            GameOver();
+            UIManager.instance.GameOver();
         }
-    }
-
-    public void GameOver()
-    {
-        Time.timeScale = 0.0f;
     }
 
     public void Item_Block(Vector2 Pos)
