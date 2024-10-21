@@ -12,10 +12,13 @@ public class Ball : MonoBehaviour
 
     private Vector2 ballDir;
     private bool isTouched;
+    public AudioClip touchBlockClip;
+    private AudioSource touchedBlockSound;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        touchedBlockSound = GetComponent<AudioSource>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -23,9 +26,13 @@ public class Ball : MonoBehaviour
         if (collision.gameObject.tag == "Wall")
         {
             ballDir = Vector2.Reflect(ballDir, collision.contacts[0].normal);
+            touchedBlockSound.clip = touchBlockClip;
+            touchedBlockSound.Play();
         }
         else if (collision.gameObject.tag == "Player")
         {
+            touchedBlockSound.clip = touchBlockClip;
+            touchedBlockSound.Play();
             // 기본 방향 계산
             ballDir = Vector2.Reflect(ballDir, collision.contacts[0].normal);
             

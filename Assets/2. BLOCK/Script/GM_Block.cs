@@ -12,7 +12,7 @@ public class GM_Block : MonoBehaviour
 
     public static GM_Block gm_Block;
     public Block_List block_List;
-    public ObjectPool_Block objectPool;
+    public ObjectPool_Block objectPool;    
 
     public int stage_Level;
 
@@ -31,7 +31,7 @@ public class GM_Block : MonoBehaviour
     }
 
     private void Start()
-    {
+    {        
         Game_Start();
     }
 
@@ -54,7 +54,7 @@ public class GM_Block : MonoBehaviour
     void Game_Start()
     {
         stage_Level++;
-        block_List.BlockInit();
+        block_List.BlockInit();        
         ball_Num = 1;
         curLives = totalLives;
         Life.text = $"남은 목숨 :{curLives}";
