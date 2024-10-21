@@ -8,6 +8,9 @@ TagManager:
   - Item
   - Ground
   - Wall
+  - Shield
+  - Ball
+  - Bullet
   layers:
   - Default
   - TransparentFX

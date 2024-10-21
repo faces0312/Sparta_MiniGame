@@ -10,9 +10,9 @@ public class GM_Suberunker : MonoBehaviour
 
     public GameObject endPanel;
     public Text nowScore;
-    public GM_Suberunker Instance;
 
     //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½
+    //·¹º§ ³­ÀÌµµ °ü·Ã
     public Object_Pool object_Pool;
     public TextMeshProUGUI level_Text;
     public int level;
@@ -31,10 +31,6 @@ public class GM_Suberunker : MonoBehaviour
     {
         gm = this;
         level = 1;
-        if(Instance == null)
-        {
-            Instance = this;
-        }
     }
 
     private void Start()
@@ -72,8 +68,9 @@ public class GM_Suberunker : MonoBehaviour
     {
         int obstacle_Ran = Random.Range(0, 10);
         int item_Init = Random.Range(0, 10);
+        int obstacle_SideRan = Random.Range(0, 10);
 
-        for(int i=0; i <num; i++)
+        for (int i=0; i <num; i++)
         {
             if (obstacle_Ran < 7)
                 object_Pool.SpawnFromObjectPool("Normal_Obstacle");
@@ -81,7 +78,17 @@ public class GM_Suberunker : MonoBehaviour
                 object_Pool.SpawnFromObjectPool("Hard_Obstacle");
         }
 
-        if(item_Init < 3)
+        if (obstacle_SideRan < 3)
+        {
+            int side_Ran = Random.Range(0, 2);
+
+            if (side_Ran < 1)
+                object_Pool.SpawnFromObjectPool("Left_Obstacle");
+            else
+                object_Pool.SpawnFromObjectPool("Right_Obstacle");
+        }
+
+        if (item_Init < 3)
         {
             int item_Ran = Random.Range(0, 10);
 
@@ -90,6 +97,16 @@ public class GM_Suberunker : MonoBehaviour
             else
                 object_Pool.SpawnFromObjectPool("P_Rubi");
         }
+       
+    }
+    public void GameOver()
+    {
+        Invoke("StopTime", 1f);
+    }
+
+    void StopTime()
+    {
+        Time.timeScale = 0f;
     }
 
     public void GameOver()
