@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Ball : MonoBehaviour
-{    
+{
     private Rigidbody2D rb;
 
     private float ballSpeed = 5f;
@@ -15,7 +15,7 @@ public class Ball : MonoBehaviour
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();        
+        rb = GetComponent<Rigidbody2D>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -32,12 +32,12 @@ public class Ball : MonoBehaviour
             // 약간의 각도 변화가 발생 -15도에서 15도 사이로 변경
             // collision.contacts[0].point.x
 
-            if (collision.contacts[0].point.x < GM_Block.instance.player.transform.position.x)
+            if (collision.contacts[0].point.x < GM_Block.gm_Block.player.transform.position.x)
             {
                 float angleOffsetLeft = Random.Range(-30f, 0f);
                 ballDir = Quaternion.Euler(0, 0, angleOffsetLeft) * ballDir;
             }
-            else if (collision.contacts[0].point.x > GM_Block.instance.player.transform.position.x)
+            else if (collision.contacts[0].point.x > GM_Block.gm_Block.player.transform.position.x)
             {
                 float angleOffsetRight = Random.Range(0f, 30f);
                 ballDir = Quaternion.Euler(0, 0, angleOffsetRight) * ballDir;
@@ -48,20 +48,20 @@ public class Ball : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ground")
         {
-            Debug.Log(GM_Block.instance.ball_Num);
-            if (GM_Block.instance.ball_Num == 1)
+            Debug.Log(GM_Block.gm_Block.ball_Num);
+            if (GM_Block.gm_Block.ball_Num == 1)
             {
-                GM_Block.instance.objectPool.SpawnFromObjectPool("Ball", new Vector2(GM_Block.instance.player.transform.position.x, GM_Block.instance.player.transform.position.y + 2));
-                GM_Block.instance.curLives--;
-                if (GM_Block.instance.curLives <= 0)
+                GM_Block.gm_Block.objectPool.SpawnFromObjectPool("Ball", new Vector2(GM_Block.gm_Block.player.transform.position.x, GM_Block.gm_Block.player.transform.position.y + 2));
+                GM_Block.gm_Block.curLives--;
+                if (GM_Block.gm_Block.curLives <= 0)
                 {
-                    GM_Block.instance.GameOver();
+                    GM_Block.gm_Block.GameOver();
                 }
                 gameObject.SetActive(false);
             }
             else
             {
-                GM_Block.instance.ball_Num--;
+                GM_Block.gm_Block.ball_Num--;
                 gameObject.SetActive(false);
             }
         }

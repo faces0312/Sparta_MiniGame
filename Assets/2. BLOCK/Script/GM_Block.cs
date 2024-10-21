@@ -8,9 +8,12 @@ using Random = UnityEngine.Random;
 
 public class GM_Block : MonoBehaviour
 {
-    public static GM_Block instance;
 
+    public static GM_Block gm_Block;
+    public Block_List block_List;
     public ObjectPool_Block objectPool;
+
+    public int stage_Level;
 
     public GameObject player;
     public int ball_Num;
@@ -19,17 +22,44 @@ public class GM_Block : MonoBehaviour
     public int curLives;
     public TextMeshProUGUI Life;
 
-    private void Awake()
+    void Awake()
     {
-        instance = this;
+        gm_Block = this;
+        stage_Level = 0;
     }
-    void Start()
+
+    private void Start()
     {
+        Game_Start();
+    }
+
+    private void Update()
+    {
+        Life.text = block_List.bolckAmount.ToString();
+        if (block_List.bolckAmount <= 0)
+        {
+            StopCoroutine("Bullet_Pool");
+            CancelInvoke("Size_Change");
+            objectPool.DeactivateAllObjects();
+            //Ball이 전부 사라져야 함
+            /*foreach (ObjectPool_Block.ObectPool pool in objectPool.objectPools)
+            {
+                pool.prefab.SetActive(false);
+            }*/
+            Game_Start();
+        }
+    }
+
+    void Game_Start()
+    {
+        stage_Level++;
+        block_List.BlockInit();
         ball_Num = 1;
         curLives = totalLives;
         Life.text = $"남은목숨 :{curLives}";        
+        Life.text = block_List.bolckAmount.ToString();
 
-        objectPool.SpawnFromObjectPool("Ball", new Vector2(player.transform.position.x, player.transform.position.y +2));
+        objectPool.SpawnFromObjectPool("Ball", new Vector2(player.transform.position.x, player.transform.position.y + 2));
     }
 
     public void BallDropped()
