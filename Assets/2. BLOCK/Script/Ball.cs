@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Ball : MonoBehaviour
-{
-    [SerializeField]private GameObject playerPaddle;
+{    
     private Rigidbody2D rb;
 
     private float ballSpeed = 5f;
@@ -33,15 +32,37 @@ public class Ball : MonoBehaviour
             // 약간의 각도 변화가 발생 -15도에서 15도 사이로 변경
             // collision.contacts[0].point.x
 
-            if (collision.contacts[0].point.x < playerPaddle.transform.position.x)
+            if (collision.contacts[0].point.x < GM_Block.instance.player.transform.position.x)
             {
                 float angleOffsetLeft = Random.Range(-30f, 0f);
                 ballDir = Quaternion.Euler(0, 0, angleOffsetLeft) * ballDir;
             }
-            else if (collision.contacts[0].point.x > playerPaddle.transform.position.x)
+            else if (collision.contacts[0].point.x > GM_Block.instance.player.transform.position.x)
             {
                 float angleOffsetRight = Random.Range(0f, 30f);
                 ballDir = Quaternion.Euler(0, 0, angleOffsetRight) * ballDir;
+            }
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Ground")
+        {
+            Debug.Log(GM_Block.instance.ball_Num);
+            if (GM_Block.instance.ball_Num == 1)
+            {
+                GM_Block.instance.objectPool.SpawnFromObjectPool("Ball", new Vector2(GM_Block.instance.player.transform.position.x, GM_Block.instance.player.transform.position.y + 2));
+                GM_Block.instance.curLives--;
+                if (GM_Block.instance.curLives <= 0)
+                {
+                    GM_Block.instance.GameOver();
+                }
+                gameObject.SetActive(false);
+            }
+            else
+            {
+                GM_Block.instance.ball_Num--;
+                gameObject.SetActive(false);
             }
         }
     }

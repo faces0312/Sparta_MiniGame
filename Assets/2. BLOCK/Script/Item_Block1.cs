@@ -6,7 +6,7 @@ public class Item_Block1 : Item_Block
 {
     protected override void Item_Effect()
     {
-        GM_Block.gm_Block.Item1();
+        GM_Block.instance.Item1();
         gameObject.SetActive(false);
     }
 

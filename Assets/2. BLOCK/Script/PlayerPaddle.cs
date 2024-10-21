@@ -6,13 +6,12 @@ using UnityEngine;
 public class PlayerPaddle : MonoBehaviour
 {
     private int speed = 5;
-    private PlayerPaddleInput input;
-    private GameObject playerPaddle;
+    private PlayerPaddleInput input;    
 
     void Start()
     {
         input = GetComponent<PlayerPaddleInput>();
-        playerPaddle.transform.position = new Vector3(0f,-4f,0f);
+        gameObject.transform.position = new Vector3(0f,-4f,0f);
     }
 
     void Update()
