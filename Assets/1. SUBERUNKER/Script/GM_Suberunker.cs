@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GM_Suberunker : MonoBehaviour
 {
@@ -30,6 +31,7 @@ public class GM_Suberunker : MonoBehaviour
 
     private void Awake()
     {
+        Time.timeScale = 1;
         gm = this;
         level = 1;
     }
@@ -113,5 +115,10 @@ public class GM_Suberunker : MonoBehaviour
         //nowScore.text = time.ToString("N2");
         endPanel.SetActive(true);
         Debug.Log("Call");
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene("SUBERUNKER");
     }
 }
