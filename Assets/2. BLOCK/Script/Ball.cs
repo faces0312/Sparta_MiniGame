@@ -52,11 +52,7 @@ public class Ball : MonoBehaviour
             if (GM_Block.gm_Block.ball_Num == 1)
             {
                 GM_Block.gm_Block.objectPool.SpawnFromObjectPool("Ball", new Vector2(GM_Block.gm_Block.player.transform.position.x, GM_Block.gm_Block.player.transform.position.y + 2));
-                GM_Block.gm_Block.curLives--;
-                if (GM_Block.gm_Block.curLives <= 0)
-                {
-                    GM_Block.gm_Block.GameOver();
-                }
+                GM_Block.gm_Block.BallDropped();
                 gameObject.SetActive(false);
             }
             else
