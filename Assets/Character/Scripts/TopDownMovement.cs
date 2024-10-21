@@ -1,4 +1,5 @@
 ﻿using System; //##
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TopDownMovement : MonoBehaviour
@@ -120,6 +121,7 @@ public class TopDownMovement : MonoBehaviour
     {
         if (collision.CompareTag("Ground"))
         {
+            Debug.Log(collision.name);
             Destroy(gameObject);
         }
         else if (collision.CompareTag("Obstacle"))
