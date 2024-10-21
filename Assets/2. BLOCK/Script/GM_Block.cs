@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Random = UnityEngine.Random;
+using UnityEngine.SceneManagement;
 
 public class GM_Block : MonoBehaviour
 {
@@ -36,6 +37,11 @@ public class GM_Block : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKey("escape"))
+        {
+            SceneManager.LoadScene("Start");
+        }
+
         if (block_List.bolckAmount <= 0)
         {
             StopCoroutine("Bullet_Pool");
