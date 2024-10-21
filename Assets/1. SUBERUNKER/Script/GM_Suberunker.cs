@@ -25,6 +25,7 @@ public class GM_Suberunker : MonoBehaviour
     private float time = 0;
     public TextMeshProUGUI time_Text;
 
+    public GameObject player;
     public GameObject shield;
 
     private void Awake()
@@ -41,6 +42,8 @@ public class GM_Suberunker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        shield.transform.position = player.transform.position;
+
         time += Time.deltaTime;
         time_Text.text = time.ToString("F2");
 

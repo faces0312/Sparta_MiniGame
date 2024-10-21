@@ -118,12 +118,13 @@ public class TopDownMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision) // ##
     {
-        if (collision.CompareTag("Ground"))
+        /*if (collision.CompareTag("Ground"))
         {
             Destroy(gameObject);
-        }
-        else if (collision.CompareTag("Obstacle"))
+        }*/
+        if (collision.CompareTag("Obstacle"))
         {
+            GM_Suberunker.gm.GameOver();
             isDeath = true;
             GetComponent<PlayerDeath>().Death();
         }
