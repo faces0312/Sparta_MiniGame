@@ -12,7 +12,7 @@ public class PlayerPaddle : MonoBehaviour
     void Start()
     {
         input = GetComponent<PlayerPaddleInput>();
-        playerPaddle.transform.position = new Vector3(0f,-4f,0f);
+        gameObject.transform.position = new Vector3(0f,-4f,0f);
     }
 
     void Update()

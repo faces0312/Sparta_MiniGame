@@ -17,11 +17,6 @@ public class Block_List : MonoBehaviour
     //7칸짜리 5줄의 블록 생성
     public RowArrayBlock[] blockArray;
 
-    void Awake()
-    {
-        BlockInit();
-    }
-
     public void BlockInit()
     {
         bolckAmount = 35;

@@ -9,8 +9,10 @@ using Random = UnityEngine.Random;
 public class GM_Block : MonoBehaviour
 {
     public static GM_Block gm_Block;
-
+    public Block_List block_List;
     public ObjectPool_Block objectPool;
+
+    public int stage_Level;
 
     public GameObject player;
     public int ball_Num;
@@ -22,16 +24,41 @@ public class GM_Block : MonoBehaviour
     private void Awake()
     {
         gm_Block = this;
+        stage_Level = 0;
     }
-    // Start is called before the first frame update
-    void Start()
+
+    private void Start()
     {
+        Game_Start();
+    }
+
+    private void Update()
+    {
+        Life.text = block_List.bolckAmount.ToString();
+        if (block_List.bolckAmount <= 0)
+        {
+            StopCoroutine("Bullet_Pool");
+            CancelInvoke("Size_Change");
+            objectPool.DeactivateAllObjects();
+            //Ball이 전부 사라져야 함
+            /*foreach (ObjectPool_Block.ObectPool pool in objectPool.objectPools)
+            {
+                pool.prefab.SetActive(false);
+            }*/
+            Game_Start();
+        }
+    }
+
+    void Game_Start()
+    {
+        stage_Level++;
+        block_List.BlockInit();
         ball_Num = 1;
         curLives = totalLives;
-        Life.text = "Life :" + curLives.ToString();
-        Life.text = curLives.ToString();
+        //Life.text = "Life :" + curLives.ToString();
+        Life.text = block_List.bolckAmount.ToString();
 
-        objectPool.SpawnFromObjectPool("Ball", new Vector2(player.transform.position.x, player.transform.position.y +2));
+        objectPool.SpawnFromObjectPool("Ball", new Vector2(player.transform.position.x, player.transform.position.y + 2));
     }
 
     public void BallDropped()
