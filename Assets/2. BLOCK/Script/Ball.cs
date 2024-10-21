@@ -28,8 +28,7 @@ public class Ball : MonoBehaviour
         {
             // 기본 방향 계산
             ballDir = Vector2.Reflect(ballDir, collision.contacts[0].normal);
-
-            // 약간의 각도 변화가 발생 -15도에서 15도 사이로 변경
+            
             // collision.contacts[0].point.x
 
             if (collision.contacts[0].point.x < GM_Block.gm_Block.player.transform.position.x)
@@ -80,12 +79,5 @@ public class Ball : MonoBehaviour
         {
             transform.Translate(ballDir * ballSpeed * Time.deltaTime);
         }
-    }
-
-    public void SetBall(float _speed, float _damage, bool _isTouched = false)
-    {
-        isTouched = !_isTouched;
-        ballSpeed = _speed;
-        damage = _damage;
-    }
+    }  
 }
