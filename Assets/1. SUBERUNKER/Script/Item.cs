@@ -41,6 +41,7 @@ public abstract class Item : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             audioSource.PlayOneShot(clip);
+            ItemEffect();
             //Sheild.SetActive(true);
         }
     }

@@ -9,7 +9,7 @@ public class GM_Suberunker : MonoBehaviour
     public static GM_Suberunker gm;
 
     public GameObject endPanel;
-    public Text nowScore;
+    //public Text nowScore;
 
     //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½
     //·¹º§ ³­ÀÌµµ °ü·Ã
@@ -106,13 +106,8 @@ public class GM_Suberunker : MonoBehaviour
 
     void StopTime()
     {
-        Time.timeScale = 0f;
-    }
-
-    public void GameOver()
-    {
         Time.timeScale = 0.0f;
-        nowScore.text = time.ToString("N2");
+        //nowScore.text = time.ToString("N2");
         endPanel.SetActive(true);
         Debug.Log("Call");
     }
