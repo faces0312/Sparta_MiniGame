@@ -1,40 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class script : MonoBehaviour
 {
-    TimeFlow timeFlow;
+    public TextMeshProUGUI time_Text;
+    float time;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        timeFlow = new TimeFlow();
+        time = 0f;
     }
-
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        timeFlow.Update();
-    }
-
-    public class TimeFlow
-    {
-        public Text timeText;
-        private float remainingTime = 30.00f;
-
-        public void Update()
-        {
-            if (remainingTime > 0)
-            {
-                remainingTime -= Time.deltaTime;
-                timeText.text = "Time: " + remainingTime.ToString("F2") + "seconds";
-            }
-            else
-            {
-                timeText.text = "Time: 0.00 seconds";
-            }
-        }
+        time += Time.deltaTime;
+        time_Text.text = time.ToString("F2");
     }
 }

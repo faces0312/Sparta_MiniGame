@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Obstacle : MonoBehaviour
 {
     private float x_Pos;
     private float y_Pos;
 
+    public AudioSource audioSource;
     //public int id;
     public BoxCollider2D boxCollider;
 
@@ -32,8 +34,9 @@ public class Obstacle : MonoBehaviour
     {
         if(collision.tag == "Player")
         {
-            //°ÔÀÓ ¿À¹ö
-
+            //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+            GM_Suberunker.gm.GameOver();
+            audioSource.Play();
             //
             Time.timeScale = 0;
         }

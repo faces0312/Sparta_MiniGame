@@ -6,7 +6,7 @@ public class Item_Score : Item
 {
     protected override void ItemEffect()
     {
-        //TODO :: Ãß°¡ Á¡¼ö
+        //TODO :: ï¿½ß°ï¿½ ï¿½ï¿½ï¿½ï¿½
         GM_Suberunker.gm.score += 100;
         //
         gameObject.SetActive(false);
