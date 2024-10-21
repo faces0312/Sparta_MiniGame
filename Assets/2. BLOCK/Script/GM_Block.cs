@@ -41,11 +41,6 @@ public class GM_Block : MonoBehaviour
             StopCoroutine("Bullet_Pool");
             CancelInvoke("Size_Change");
             objectPool.DeactivateAllObjects();
-            //Ball이 전부 사라져야 함
-            /*foreach (ObjectPool_Block.ObectPool pool in objectPool.objectPools)
-            {
-                pool.prefab.SetActive(false);
-            }*/
             Game_Start();
         }
     }

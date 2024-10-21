@@ -123,7 +123,7 @@ public class Block : MonoBehaviour
         {
             //아이템 블록
             Debug.Log("아이템블록");
-            GM_Block.instance.Item_Block(gameObject.transform.position);
+            GM_Block.gm_Block.Item_Block(gameObject.transform.position);
             block_List.bolckAmount -= 1;
             gameObject.SetActive(false);
             UIManager.instance.CurScore += 10;

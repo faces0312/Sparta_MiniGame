@@ -14,7 +14,6 @@ public class ObjectPool_Block : MonoBehaviour
 
     public List<ObectPool> objectPools;
     public Dictionary<string, Queue<GameObject>> objectPoolsDictionary;
-    Queue<GameObject> objectPool = new Queue<GameObject>();
 
     private void Awake()
     {
@@ -26,6 +25,7 @@ public class ObjectPool_Block : MonoBehaviour
         objectPoolsDictionary = new Dictionary<string, Queue<GameObject>>();
         foreach (ObectPool pool in objectPools)
         {
+            Queue<GameObject> objectPool = new Queue<GameObject>();
             for (int i = 0; i < pool.size; i++)
             {
                 GameObject obj = Instantiate(pool.prefab);
@@ -49,10 +49,12 @@ public class ObjectPool_Block : MonoBehaviour
     }
     public void DeactivateAllObjects()
     {
-        foreach (GameObject _obj in objectPool)
+        foreach (var pool in objectPoolsDictionary.Values)
         {
-            GameObject obj = _obj;
-            obj.SetActive(false);
+            foreach (var obj in pool)
+            {
+                obj.SetActive(false);
+            }
         }
     }
 }
