@@ -44,6 +44,11 @@ public class GM_Suberunker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKey("escape"))
+        {
+            SceneManager.LoadScene("Start");
+        }
+            
         shield.transform.position = player.transform.position;
 
         time += Time.deltaTime;
