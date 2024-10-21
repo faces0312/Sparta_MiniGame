@@ -95,8 +95,8 @@ GameObject:
   - component: {fileID: 3733998872685348732}
   - component: {fileID: 5349862448421061722}
   - component: {fileID: 7970221616164812188}
-  - component: {fileID: 5758758108546537050}
   - component: {fileID: -7149742511097632959}
+  - component: {fileID: 5974727359820275945}
   m_Layer: 0
   m_Name: Normal_Obstacle
   m_TagString: Obstacle
@@ -192,20 +192,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6, y: 0.45}
   m_EdgeRadius: 0
---- !u!114 &5758758108546537050
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5624223166259295035}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60e492cd4107ec245a4881d2e0548e30, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioSource: {fileID: -7149742511097632959}
-  boxCollider: {fileID: 7970221616164812188}
 --- !u!82 &-7149742511097632959
 AudioSource:
   m_ObjectHideFlags: 0
@@ -302,3 +288,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5974727359820275945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5624223166259295035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a1c6902fc67e634b91a60976c752cfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  x_Pos: 0
+  y_Pos: 0
+  audioSource: {fileID: -7149742511097632959}
+  boxCollider: {fileID: 7970221616164812188}
+  x_Range: 2.8
+  speed: 3

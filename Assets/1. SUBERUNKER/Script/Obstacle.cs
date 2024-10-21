@@ -30,7 +30,7 @@ public abstract class Obstacle : MonoBehaviour
     protected abstract void Obstacle_Move();
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Player")
+        if(collision.tag == "Player" && GM_Suberunker.gm.shield.activeSelf == false)
         {
             //���� ����
             GM_Suberunker.gm.GameOver();
