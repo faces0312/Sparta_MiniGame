@@ -36,17 +36,4 @@ public abstract class Obstacle : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
