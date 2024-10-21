@@ -4269,6 +4269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c452e6aabb944b4fb15e44c5ab47160, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  capsuleColl: {fileID: 0}
 --- !u!50 &492312134
 Rigidbody2D:
   serializedVersion: 4
@@ -8540,10 +8541,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1880077919}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0.25, y: -2.5}
-  m_SizeDelta: {x: -0.5, y: 5}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -0.5}
+  m_SizeDelta: {x: 4, y: 0.8000002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &864053727
 MonoBehaviour:
@@ -8599,7 +8600,7 @@ MonoBehaviour:
   m_fontSizeMin: 0
   m_fontSizeMax: 20
   m_fontStyle: 1
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -8628,7 +8629,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 4.1626587}
+  m_margin: {x: 0, y: 0.014212966, z: 0, w: 0.0051790476}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -8828,11 +8829,11 @@ RectTransform:
   - {fileID: 639312470}
   m_Father: {fileID: 1880077919}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -1.5}
   m_SizeDelta: {x: 2, y: 0.7}
-  m_Pivot: {x: 0.5, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &883454165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8876,7 +8877,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 883454166}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1558051838}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: PressRestartBtn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &883454166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11506,11 +11519,11 @@ RectTransform:
   - {fileID: 933765571}
   m_Father: {fileID: 1880077919}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.45}
-  m_SizeDelta: {x: -0.8000001, y: 1.2}
-  m_Pivot: {x: 0.5, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 1.4}
+  m_SizeDelta: {x: 4.2, y: 1.2}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1081209102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11793,7 +11806,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 3, y: -0.6, z: 0}
-  m_LocalScale: {x: 0.25, y: 8.9, z: 1}
+  m_LocalScale: {x: 0.2, y: 8.9, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 822158773}
@@ -12983,10 +12996,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1880077919}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0.25, y: -1.8}
-  m_SizeDelta: {x: -0.5, y: 5}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0.2}
+  m_SizeDelta: {x: 4, y: 0.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1214163736
 MonoBehaviour:
@@ -13042,7 +13055,7 @@ MonoBehaviour:
   m_fontSizeMin: 0
   m_fontSizeMax: 20
   m_fontStyle: 1
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -13071,7 +13084,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 4.1626587}
+  m_margin: {x: 0.018532515, y: 0.0052019954, z: 0, w: 0.016115308}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -16246,7 +16259,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -3, y: -0.6, z: 0}
-  m_LocalScale: {x: 0.25, y: 8.9, z: 1}
+  m_LocalScale: {x: 0.2, y: 8.9, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 822158773}
@@ -16380,6 +16393,8 @@ MonoBehaviour:
   gameOverCanvas: {fileID: 103784778}
   curTxt: {fileID: 2088839464}
   bestTxt: {fileID: 1959008949}
+  gameOverPanalcurTxt: {fileID: 1214163736}
+  gameOverPanalbestTxt: {fileID: 864053727}
 --- !u!4 &1558051839
 Transform:
   m_ObjectHideFlags: 0
@@ -22239,6 +22254,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 1587567951}
   - {fileID: 596436130}
+  - {fileID: 103784782}
   - {fileID: 5205343}
   - {fileID: 1642210655}
   - {fileID: 1365743079}
@@ -22248,4 +22264,3 @@ SceneRoots:
   - {fileID: 871169101}
   - {fileID: 1558051839}
   - {fileID: 238634292}
-  - {fileID: 103784782}
