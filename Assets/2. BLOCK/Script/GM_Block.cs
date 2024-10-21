@@ -30,7 +30,7 @@ public class GM_Block : MonoBehaviour
         Life.text = $"³²Àº¸ñ¼û :{curLives}";        
 
         objectPool.SpawnFromObjectPool("Ball", new Vector2(player.transform.position.x, player.transform.position.y +2));
-    }
+    }  
 
     public void BallDropped()
     {
