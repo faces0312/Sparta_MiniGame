@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-    public Rigidbody2D rb;
+    private Rigidbody2D rb;
 
     private float ballSpeed = 5f;
-    
+
     private float damage;
 
     private Vector2 ballDir;
@@ -20,12 +20,6 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // 충돌한 면의 법선 벡터를 가져옴
-        // Vector2 normal = collision.contacts[0].normal;
-
-        // 입사 벡터를 반사 벡터로 변환 (입사각 = 반사각)
-        // velocity = Vector2.Reflect(velocity, normal);
-
         if (collision.gameObject.tag == "Wall")
         {
             ballDir = Vector2.Reflect(ballDir, collision.contacts[0].normal);
@@ -36,10 +30,36 @@ public class Ball : MonoBehaviour
             ballDir = Vector2.Reflect(ballDir, collision.contacts[0].normal);
 
             // 약간의 각도 변화가 발생 -15도에서 15도 사이로 변경
-            float angleOffset = Random.Range(-15f, 15f); 
-            ballDir = Quaternion.Euler(0, 0, angleOffset) * ballDir;
+            // collision.contacts[0].point.x
 
-            //SetBall(ballSpeed, damage =1, isTouched);
+            if (collision.contacts[0].point.x < GM_Block.gm_Block.player.transform.position.x)
+            {
+                float angleOffsetLeft = Random.Range(-30f, 0f);
+                ballDir = Quaternion.Euler(0, 0, angleOffsetLeft) * ballDir;
+            }
+            else if (collision.contacts[0].point.x > GM_Block.gm_Block.player.transform.position.x)
+            {
+                float angleOffsetRight = Random.Range(0f, 30f);
+                ballDir = Quaternion.Euler(0, 0, angleOffsetRight) * ballDir;
+            }
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Ground")
+        {
+            Debug.Log(GM_Block.gm_Block.ball_Num);
+            if (GM_Block.gm_Block.ball_Num == 1)
+            {
+                GM_Block.gm_Block.objectPool.SpawnFromObjectPool("Ball", new Vector2(GM_Block.gm_Block.player.transform.position.x, GM_Block.gm_Block.player.transform.position.y + 2));
+                GM_Block.gm_Block.BallDropped();
+                gameObject.SetActive(false);
+            }
+            else
+            {
+                GM_Block.gm_Block.ball_Num--;
+                gameObject.SetActive(false);
+            }
         }
     }
     private void Start()
@@ -56,9 +76,9 @@ public class Ball : MonoBehaviour
             ballPos.y += 0.1f;
             transform.position = ballPos;
         }
-        else 
+        else
         {
-            transform.Translate(ballDir * ballSpeed * Time.deltaTime);        
+            transform.Translate(ballDir * ballSpeed * Time.deltaTime);
         }
     }
 

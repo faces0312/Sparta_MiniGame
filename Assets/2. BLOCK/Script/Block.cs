@@ -68,13 +68,23 @@ public class Block : MonoBehaviour
         //block.Block_Behaviour();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.tag == "Player")
+        if (collision.gameObject.tag == "Ball")
         {
             Block_Hit(id);
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Bullet")
+        {
+            Block_Hit(id);
+            collision.gameObject.SetActive(false);
+        }
+    }
+
 
     private void Block_Hit(int id)
     {
@@ -82,7 +92,9 @@ public class Block : MonoBehaviour
         {
             //일반 블록
             Debug.Log("일반블록");
+            block_List.bolckAmount -= 1;
             gameObject.SetActive(false);
+            UIManager.instance.CurScore += 10;
         }
         else if (id == 1)
         {
@@ -90,7 +102,11 @@ public class Block : MonoBehaviour
             Debug.Log("강화블록");
             hp--;
             if(hp <= 0)
+            {
+                block_List.bolckAmount -= 1;
                 gameObject.SetActive(false);
+                UIManager.instance.CurScore += 20;
+            }
             else
             {
                 block_Kind[1].gameObject.SetActive(false);
@@ -107,7 +123,10 @@ public class Block : MonoBehaviour
         {
             //아이템 블록
             Debug.Log("아이템블록");
+            GM_Block.gm_Block.Item_Block(gameObject.transform.position);
+            block_List.bolckAmount -= 1;
             gameObject.SetActive(false);
+            UIManager.instance.CurScore += 10;
         }
     }
 }
