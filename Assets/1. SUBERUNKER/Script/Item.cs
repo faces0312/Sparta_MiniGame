@@ -17,6 +17,14 @@ public abstract class Item : MonoBehaviour
         transform.position = new Vector2(x_Pos, y_Pos);
     }
 
+    AudioSource audioSource;
+    public AudioClip clip;
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+   
     // Update is called once per frame
     void Update()
     {
@@ -32,7 +40,7 @@ public abstract class Item : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Player"))
         {
-            ItemEffect();
+            audioSource.PlayOneShot(clip);
             //Sheild.SetActive(true);
         }
     }
