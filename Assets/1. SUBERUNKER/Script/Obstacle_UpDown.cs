@@ -11,7 +11,6 @@ public class Obstacle_UpDown : Obstacle
         y_Pos = 5.5f;
         transform.position = new Vector2(x_Pos, y_Pos);
     }
-
     protected override void Obstacle_Move()
     {
         transform.position += Vector3.down * (speed + GM_Suberunker.gm.level * 0.3f) * Time.deltaTime;

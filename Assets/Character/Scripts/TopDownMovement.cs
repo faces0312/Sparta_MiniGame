@@ -1,12 +1,17 @@
-﻿using UnityEngine;
+﻿using System; //##
+using UnityEngine;
 
 public class TopDownMovement : MonoBehaviour
 {
     private TopDownConroller controller;
-    private Rigidbody2D movementRigidbody;
+    private Rigidbody2D rb; // 같은 오브젝트에 있는 Rigidbody2D 컴포넌트를 담아둘 변수 ##
     private SpriteRenderer spriteRenderer;
 
-    private float speed;
+    private float speed; // 캐릭터의 스피드를 제어할 변수 ##
+    Animator anit; // 같은 오브젝트에 있는 Animator 컴포넌트를 담아둘 변수 ##
+
+    bool isDeath = false; // 죽은 상태를 체크할 bool 변수 ##
+    bool isMoving = false;
 
     private Vector2 movementDirection = Vector2.zero;
     private bool isGrounded = true;  // 땅에 닿아 있는지 여부 확인
@@ -18,8 +23,9 @@ public class TopDownMovement : MonoBehaviour
     private void Awake()
     {
         controller = GetComponent<TopDownConroller>();
-        movementRigidbody = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        anit = GetComponent<Animator>();
     }
 
     private void Start()
@@ -35,20 +41,25 @@ public class TopDownMovement : MonoBehaviour
         {
             Jump();
         }
+        if (isDeath) return; // 죽음 상태라면 함수를 빠져나감 // ##
 
+        //Move();
         // 땅에 닿아 있는지 체크
         //isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
     }
 
+    private void Move() //##
+    {
+        throw new NotImplementedException();
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Ground")
+        if (collision.gameObject.tag == "Ground")
         {
             speed = 5f;
             isGrounded = true;
         }
-
         /*if(collision.gameObject.tag == "Wall")
         {
             speed = 0f;
@@ -76,6 +87,7 @@ public class TopDownMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (isDeath) return;
         ApplyMovement(movementDirection);
         Flip(movementDirection);
     }
@@ -83,7 +95,7 @@ public class TopDownMovement : MonoBehaviour
     private void ApplyMovement(Vector2 direction)
     {
         direction = direction * speed;
-        movementRigidbody.velocity = new Vector2(direction.x, movementRigidbody.velocity.y); // 점프 중에도 수평 이동 유지
+        rb.velocity = new Vector2(direction.x, rb.velocity.y); // 점프 중에도 수평 이동 유지
     }
 
     private void Flip(Vector2 direction)
@@ -101,7 +113,20 @@ public class TopDownMovement : MonoBehaviour
     // 점프 기능 추가
     private void Jump()
     {
-        movementRigidbody.velocity = new Vector2(movementRigidbody.velocity.x, jumpForce);
+        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
     }
-}
 
+    private void OnTriggerEnter2D(Collider2D collision) // ##
+    {
+        if (collision.CompareTag("Ground"))
+        {
+            Destroy(gameObject);
+        }
+        else if (collision.CompareTag("Obstacle"))
+        {
+            isDeath = true;
+            GetComponent<PlayerDeath>().Death();
+        }
+    }
+
+}

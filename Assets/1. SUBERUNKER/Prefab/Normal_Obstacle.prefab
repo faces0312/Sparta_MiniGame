@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 3733998872685348732}
   - component: {fileID: 5349862448421061722}
   - component: {fileID: 7970221616164812188}
-  - component: {fileID: 4155064550883816824}
+  - component: {fileID: 4062381128935370860}
   m_Layer: 0
   m_Name: Normal_Obstacle
   m_TagString: Obstacle
@@ -191,7 +191,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6, y: 0.45}
   m_EdgeRadius: 0
---- !u!114 &4155064550883816824
+--- !u!114 &4062381128935370860
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -205,6 +205,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   x_Pos: 0
   y_Pos: 0
-  boxCollider: {fileID: 7970221616164812188}
+  boxCollider: {fileID: 0}
   x_Range: 2.8
   speed: 3

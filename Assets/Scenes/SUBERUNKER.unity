@@ -427,7 +427,7 @@ GameObject:
   - component: {fileID: 203989550}
   - component: {fileID: 203989548}
   - component: {fileID: 203989547}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1349,10 +1349,11 @@ GameObject:
   - component: {fileID: 950181604}
   - component: {fileID: 950181603}
   - component: {fileID: 950181602}
+  - component: {fileID: 950181609}
   - component: {fileID: 950181601}
   - component: {fileID: 950181600}
   - component: {fileID: 950181608}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1369,7 +1370,7 @@ Animator:
   m_GameObject: {fileID: 950181599}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c0f0f90308136b344a6eed612922c655, type: 2}
+  m_Controller: {fileID: 9100000, guid: d5ee0b59290858e49ae388e43df966d8, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1503,12 +1504,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: b97b4b5a35294b84c9b3f59ad6fd4e98, type: 2}
+  m_Sprite: {fileID: 1971379768, guid: 743c4138469984744ae8febb29a4328e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 5.12, y: 5.12}
+  m_Size: {x: 0.26, y: 0.37}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1523,8 +1524,8 @@ Transform:
   m_GameObject: {fileID: 950181599}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.11, y: -3.5, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.4369}
+  m_LocalPosition: {x: -0.11, y: -3.6, z: 0}
+  m_LocalScale: {x: 3, y: 3, z: 0.4369}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1760511120}
@@ -1562,9 +1563,21 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -1}
-  m_Size: {x: 1.67, y: 2.3}
+  m_Offset: {x: 0, y: 0.017835936}
+  m_Size: {x: 0.40453562, y: 0.41240472}
   m_Direction: 0
+--- !u!114 &950181609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 950181599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e020833c30a7e9640bd5513042fe312b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1276214153
 GameObject:
   m_ObjectHideFlags: 0
@@ -1754,7 +1767,7 @@ GameObject:
   - component: {fileID: 1760511120}
   - component: {fileID: 1760511121}
   - component: {fileID: 1760511122}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Shield
   m_TagString: Shield
   m_Icon: {fileID: 0}
@@ -1770,8 +1783,8 @@ Transform:
   m_GameObject: {fileID: 1760511119}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 950181607}
