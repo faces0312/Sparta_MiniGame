@@ -41,7 +41,7 @@ public class GM_Block : MonoBehaviour
             StopCoroutine("Bullet_Pool");
             CancelInvoke("Size_Change");
             objectPool.DeactivateAllObjects();
-            //BallÀÌ ÀüºÎ »ç¶óÁ®¾ß ÇÔ
+            //Ballï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
             /*foreach (ObjectPool_Block.ObectPool pool in objectPool.objectPools)
             {
                 pool.prefab.SetActive(false);
@@ -56,21 +56,21 @@ public class GM_Block : MonoBehaviour
         block_List.BlockInit();
         ball_Num = 1;
         curLives = totalLives;
-        Life.text = $"³²Àº¸ñ¼û :{curLives}";        
+        Life.text = $"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ :{curLives}";        
         Life.text = block_List.bolckAmount.ToString();
 
-        objectPool.SpawnFromObjectPool("Ball", new Vector2(player.transform.position.x, player.transform.position.y + 2));
-    }
+        objectPool.SpawnFromObjectPool("Ball", new Vector2(player.transform.position.x, player.transform.position.y +2));
+    }  
 
     public void BallDropped()
     {
         curLives--;
-        Life.text = $"³²Àº¸ñ¼û :{curLives}";
+        Life.text = $"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ :{curLives}";
         if (curLives == 0)
         {
             GameOver();
         }
-        Life.text = $"³²Àº¸ñ¼û :{curLives}";
+        Life.text = $"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ :{curLives}";
     }
 
     public void GameOver()
