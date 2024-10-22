@@ -10,6 +10,8 @@ public class GM_Suberunker : MonoBehaviour
     public static GM_Suberunker gm;
 
     public GameObject endPanel;
+    public TextMeshProUGUI endPannel_LV;
+    public TextMeshProUGUI endPannel_Score;
     //public Text nowScore;
 
     //���� ���̵� ����
@@ -119,6 +121,8 @@ public class GM_Suberunker : MonoBehaviour
         Time.timeScale = 0.0f;
         //nowScore.text = time.ToString("N2");
         endPanel.SetActive(true);
+        endPannel_LV.text = "LV : " + level.ToString();
+        endPannel_Score.text = "SCORE : " + score.ToString("F0");
         Debug.Log("Call");
     }
 
